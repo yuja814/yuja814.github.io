@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>차:다움 | AROMA</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Pretendard', sans-serif;
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2') format('woff2');
+            font-weight: 600;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-display: swap;
+        }
+        body {
+            width: 100%;
+            background-color: #f8f6f1;
+            color: #1c1c1c;
+        }
+        .clear { clear: both; }
+        @media only screen and (min-width : 600px) {
+            .c_m_1 {width: 8.33%;}
+            .c_m_2 {width: 16.66%;}
+            .c_m_3 {width: 25%;}
+            .c_m_4 {width: 33.33%;}
+            .c_m_5 {width: 41.66%;}
+            .c_m_6 {width: 50%;}
+            .c_m_7 {width: 58.33%;}
+            .c_m_8 {width: 66.66%;}
+            .c_m_9 {width: 75%;}
+            .c_m_10 {width: 83.33%;}
+            .c_m_11 {width: 91.66%;}
+            .c_m_12 {width: 100%;}
+        }
+        @media only screen and (min-width : 768px) {
+            .c_1 {width: 8.33%;}
+            .c_2 {width: 16.66%;}
+            .c_3 {width: 25%;}
+            .c_4 {width: 33.33%;}
+            .c_5 {width: 41.66%;}
+            .c_6 {width: 50%;}
+            .c_7 {width: 58.33%;}
+            .c_8 {width: 66.66%;}
+            .c_9 {width: 75%;}
+            .c_10 {width: 83.33%;}
+            .c_11 {width: 91.66%;}
+            .c_12 {width: 100%;}
+        }
+        @media only screen and (max-width: 1024px) {
+            [class*="c_"] {
+                float: left;
+                width: 100%;
+            }
+            .c_m_4 { width: 33.33% !important; }
+            .c_m_6 { width: 50% !important; }
+            .c_m_12 { width: 100% !important; }
+        }
+        header {
+            height: 50px; 
+            display: flex;
+            align-items: center;
+            justify-content: space-between; 
+            padding: 0 80px;
+            background-color: #1c1c1c;
+            width: 100%;
+        }   
+        header .home-logo a {
+            color: #FFA126;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 18px;
+            letter-spacing: 1px;
+        }
+        header #main_nav ul {
+            display: flex;
+            gap: 35px; 
+            list-style: none;
+        }
+        header #main_nav ul li a {
+            color: #fafafa;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        header #main_nav ul li a:hover { 
+            color: #738A3D; 
+        }
+        header #login ul {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+        header #login li a {
+            color: #b3b3b3; 
+            text-decoration: none;
+            font-size: 12px;
+        }
+        header #login li a:hover { 
+            color: #FFA126; 
+        }
+        .sub-header {
+            background-color: #1c1c1c;
+            text-align: center;
+            padding: 35px 20px 60px; 
+        }
+        .sub-header h1 {
+            font-size: 100px; 
+            font-weight: 700;
+            color: #FFA126;
+            letter-spacing: 0.8px;
+            margin-bottom: 15px;
+        }
+        .sub-header p {
+            font-size: 16px; 
+            color: #f8f6f1;
+            font-weight: 600;
+        }
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 85px 20px;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-title h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1c1c1c;
+            margin-bottom: 10px;
+        }
+        .section-title p {
+            font-size: 16px;
+            color: #888;
+        }
+        .curation-matrix {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            width: 100%;
+        }
+        .curation-item-wp {
+            width: 49%;
+            margin-bottom: 15px;
+            display: flex;
+        }
+        .curation-item {
+            background-color: #1c1c1c;
+            color: #fafafa;
+            width: 100%;
+            padding: 40px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .curation-tag-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .curation-tag-row .tag-note {
+            padding: 4px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 20px;
+            background-color: #738A3D;
+            color: #fafafa;
+        }
+        .curation-tag-row .tag-taste {
+            padding: 4px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 20px;
+            border: 1px solid #FFA126;
+            color: #FFA126;
+        }
+        .curation-item h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: #fafafa;
+        }
+        .curation-item p {
+            font-size: 14px;
+            color: #a6a6a6;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .curation-match {
+            font-size: 13px;
+            color: #FFA126;
+            font-weight: 600;
+        }
+        #aroma-therapy-section {
+            background-color: #edededf0;
+            max-width: 100%;
+        }
+        .therapy-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .therapy-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        .therapy-box {
+            background-color: #fafafa;
+            flex: 1;
+            padding: 40px 30px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+        .therapy-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            color: #f8f6f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px auto;
+            font-size: 14px;
+            font-weight: 700;
+            border: 2px solid #738A3D;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .therapy-circle.bg-relax {
+            background-image: linear-gradient(rgba(28, 28, 28, 0.6), rgba(28, 28, 28, 0.3)), 
+                            url('./image/aroma_relax.jpg');
+        }
+
+        .therapy-circle.bg-focus {
+            background-image: linear-gradient(rgba(28, 28, 28, 0.6), rgba(28, 28, 28, 0.3)), 
+                            url('./image/aroma_focus.jpg');
+        }
+
+        .therapy-circle.bg-energy {
+            background-image: linear-gradient(rgba(28, 28, 28, 0.6), rgba(28, 28, 28, 0.3)), 
+                            url('./image/aroma_energy.jpg');
+        }
+        .therapy-box h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: #1c1c1c;
+        }
+        .therapy-box p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+        .perfume-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+        .perfume-visual {
+            width: 40%;
+            aspect-ratio: 4/5;
+            background-color: #1c1c1c;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .perfume-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .perfume-guide-txt {
+            width: 50%;
+        }
+        .perfume-structure {
+            margin-top: 30px;
+        }
+        .perfume-layer {
+            padding: 10px 0;
+            border-bottom: 1px solid #1c1c1c;
+        }
+        .perfume-layer:last-child {
+            border-bottom: none;
+        }
+        .layer-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #738A3D;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+        .layer-content strong {
+            font-size: 18px;
+            color: #1c1c1c;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .layer-content span {
+            font-size: 14px;
+            color: #666;
+        }
+
+    
+        /* 푸터 영역 (완벽 피드백 공유 복사) */
+        footer {
+            background-color: #1c1c1c;
+            color: #fafafa;
+            padding: 60px 20px 30px 20px;
+            font-size: 14px;
+            width: 100%;
+        }
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-brand h2 { 
+            font-size: 24px; 
+            font-weight: 800; 
+            color: #FFA126; 
+            margin-bottom: 12px; 
+        }
+        .footer-brand p { 
+            color: #b3b3b3; 
+            max-width: 300px; 
+            line-height: 1.6; 
+        }
+        .footer-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        .footer-links { 
+            display: flex; 
+            gap: 60px; 
+        }
+        .link-group h3 { 
+            font-size: 16px; 
+            font-weight: 600; 
+            color: #fafafa; 
+            margin-bottom: 15px; 
+        }
+        .link-group ul { 
+            padding: 0; 
+            list-style: none;
+        }
+        .link-group li { 
+            margin-bottom: 10px; 
+        }
+        .link-group li a { 
+            color: #b3b3b3; 
+            text-decoration: none; 
+        }
+        .link-group li a:hover { 
+            color: #FFA126; 
+        }
+        .footer-divider { 
+            border: 0; 
+            height: 1px;
+            background-color: #333333; 
+            margin-bottom: 30px; 
+        }
+        .footer-bottom { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-end; 
+            flex-wrap: wrap; 
+            gap: 20px; 
+        }
+        .footer-info p { 
+            color: #888888; 
+            line-height: 1.8; 
+            font-size: 12px; 
+        }
+        .footer-copyright p { 
+            color: #666666; 
+            font-size: 12px; 
+        }
+        @media only screen and (max-width : 1024px) {
+            header { 
+                padding: 10px 20px; 
+                flex-wrap: wrap; 
+                height: auto; 
+                gap: 10px; 
+            }
+            header #main_nav { 
+                width: 100%; 
+                order: 3; 
+                text-align: center; 
+            }
+            header #main_nav ul { 
+                gap: 20px; 
+                justify-content: center; 
+            }
+            header #main_nav ul li a { 
+                font-size: 13px; 
+            }
+            header #login { 
+                margin-left: auto; 
+                order: 2; 
+            }
+            .sub-header h1 { 
+                font-size: 10vw; 
+            }
+            section {
+                padding: 50px 20px; 
+            }
+            .section-title { 
+                margin-bottom: 35px; 
+            }
+            .section-title h2 { 
+                font-size: 28px; 
+                margin-bottom: 8px; 
+            }
+            .section-title p { 
+                font-size: 14px; 
+            }
+            .curation-item-wp { 
+                width: 100% !important; 
+            }
+            .curation-item { 
+                padding: 30px; 
+            }
+            .therapy-grid { 
+                display: block; 
+            }
+            .therapy-box-wp { 
+                width: 100% !important; 
+                margin-bottom: 20px; 
+            }
+            .perfume-flex { 
+                display: block; 
+            }
+            .perfume-visual { 
+                width: 100% !important; 
+                aspect-ratio: 16/9; 
+                margin-bottom: 25px; 
+            }
+            .perfume-guide-txt { 
+                width: 100% !important;
+            }
+            footer {
+                padding: 40px 20px 30px 20px;
+            }
+            .footer-brand {
+                margin-bottom: 15px;
+            }
+            .link-group h3 {
+            margin-top: 15px;
+            }
+            .footer-copyright {
+                text-align: left !important;
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="c_m_12 c_12">
+        <div class="home-logo"><a href="index.html">CHA:DAUM</a></div>
+        <nav id="main_nav">
+            <ul>
+                <li><a href="blend.html">BLEND</a></li>
+                <li><a href="teanote.html">TEA NOTE</a></li>
+                <li><a href="aroma.html">AROMA</a></li>
+                <li><a href="moment.html">MOMENT</a></li>
+                <li><a href="brewing.html">BREWING</a></li>
+            </ul>
+        </nav>
+        <nav id="login">
+            <ul>
+                <li><a href="./login.html">로그인</a></li>
+                <li><a href="./signup.html">회원가입</a></li>
+                <li><a href="./cart.html">장바구니</a></li>
+                <li><a href="./mypage.html">마이페이지</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="clear"></div>
+    <div class="sub-header c_m_12 c_12">
+        <h1>AROMA</h1>
+        <p>코끝에 맺히는 수형의 미학, 미각을 깨우는 아로마 가이드</p>
+    </div>
+    <div class="clear"></div>
+
+    <section id="aroma-curation" class="c_m_12 c_12">
+        <div class="section-title">
+            <h2>SCENT & TASTE CURATION</h2>
+            <p>개인 고유의 감각적 기호에 도달하기 위한 네 가지 아로마 스펙트럼</p>
+        </div>
+        <div class="clear"></div>
+        <div class="curation-matrix">
+            <div class="curation-item-wp c_m_12 c_6">
+                <div class="curation-item">
+                    <div>
+                        <div class="curation-tag-row">
+                            <span class="tag-note">Floral (꽃향)</span>
+                            <span class="tag-taste">Sweet (달콤함)</span>
+                        </div>
+                        <h3>화사한 봄날의 정원</h3>
+                        <p>우려내는 순간 실내를 가득 채우는 화사한 재스민과 싱그러운 백화 향의 베일입니다.<br>첫맛은 섬세하고 우아하며 끝맛은 벌꿀처럼 부드러운 당미가 돕니다.</p>
+                    </div>
+                    <div class="curation-match">추천 차: 백아차, 마리골드 블랜드</div>
+                </div>
+            </div>
+
+            <div class="curation-item-wp c_m_12 c_6">
+                <div class="curation-item">
+                    <div>
+                        <div class="curation-tag-row">
+                            <span class="tag-note">Woody (나무향)</span>
+                            <span class="tag-taste">Astringent (떫고 중후함)</span>
+                        </div>
+                        <h3>깊은 숲, 고목의 숨결</h3>
+                        <p>오래된 한옥의 대청마루나 비를 머금은 흙잎에서 날 법한 깊고 정적이며 가라앉은 향조입니다.<br>묵직한 보디감과 혀끝에 감도는 중후한 타닌을 느낄 수 있습니다.</p>
+                    </div>
+                    <div class="curation-match">추천 차: 보이숙차, 전통 기문홍차</div>
+                </div>
+            </div>
+            <div class="curation-item-wp c_m_12 c_6">
+                <div class="curation-item">
+                    <div>
+                        <div class="curation-tag-row">
+                            <span class="tag-note">Citrus (시트러스)</span>
+                            <span class="tag-taste">Sour (새콤함)</span>
+                        </div>
+                        <h3>오후를 깨우는 청량한 활력</h3>
+                        <p>기분을 환기하고 세포를 깨우는 싱그러운 감귤 피, 베르가못과 라임의 새콤함이 강조된 조합입니다. 상큼한 산미가 침샘을 자극하여 리프레시에 뛰어납니다.</p>
+                    </div>
+                    <div class="curation-match">추천 차: 얼그레이 오리엔탈, 유자홍차</div>
+                </div>
+            </div>
+
+            <div class="curation-item-wp c_m_12 c_6">
+                <div class="curation-item">
+                    <div>
+                        <div class="curation-tag-row">
+                            <span class="tag-note">Spicy (스파이시)</span>
+                            <span class="tag-taste">Pungent (매콤알싸함)</span>
+                        </div>
+                        <h3>이국적인 날들의 온기</h3>
+                        <p>생강, 시나몬, 정향 등 동양의 이국적인 향신료들이 정갈하게 얽힌 독창적인 노트입니다.<br>알싸한 끝맛이 몸 안쪽부터 따스한 열감을 기분 좋게 끌어 올립니다.</p>
+                    </div>
+                    <div class="curation-match">추천 차: 차이 블랜드 티, 시나몬 루이보스</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="clear"></div>
+    <section id="aroma-therapy-section" class="c_m_12 c_12">
+        <div class="therapy-container">
+            <div class="section-title">
+                <h2>TEA AROMA THERAPY</h2>
+                <p>뜨거운 증기와 차의 향을 온전히 호흡하는 내면의 치유 방식</p>
+            </div>
+
+            <div class="therapy-grid">
+                <div class="therapy-box-wp c_m_12 c_4">
+                    <div class="therapy-box">
+                        <div class="therapy-circle bg-relax">RELAX</div>
+                        <h3>긴장 완화와 휴식</h3>
+                        <p>천연 라벤더와 캐모마일의 아로마 성분은 부교감 신경을 자극하여 지친 하루 끝 불안을 잠재우고 깊은 수면을 유도합니다.</p>
+                    </div>
+                </div>
+
+                <div class="therapy-box-wp c_m_12 c_4">
+                    <div class="therapy-box">
+                        <div class="therapy-circle bg-focus">FOCUS</div>
+                        <h3>정신 집중과 각성</h3>
+                        <p>로즈메리와 페퍼민트 계열의 차에서 뿜어 나오는 맑은 향기는 뇌를 깨워 두통을 맑게 하고 업무와 학업 효율을 고도로 올려줍니다.</p>
+                    </div>
+                </div>
+
+                <div class="therapy-box-wp c_m_12 c_4">
+                    <div class="therapy-box">
+                        <div class="therapy-circle bg-energy">ENERGY</div>
+                        <h3>기분 전환과 활력</h3>
+                        <p>새콤달콤한 과일 향과 로즈힙 성분은 세로토닌 분비를 부드럽게 도와 일상의 권태와 우울감을 리프레시하는 천연 활력제입니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="clear"></div>
+    <section id="tea-perfume-guide" class="c_m_12 c_12">
+        <div class="section-title">
+            <h2>TEA PERFUME GUIDE</h2>
+            <p>공기 중에 뿌려지는 향수처럼, 시간의 흐름에 따라 변화하는 차의 입체적인 향조</p>
+        </div>
+
+        <div class="perfume-flex">
+            <div class="perfume-visual c_m_12 c_5">
+                <img src="./image/aroma_layer.jpg">
+            </div>
+            
+            <div class="perfume-guide-txt c_m_12 c_7">
+                <h3>시간이 지남에 따라 쌓이는 다층적 레이어</h3>
+                <p>차다움이 제안하는 차 음용법은 단순한 맛의 수용이 아닙니다.<br>찻잔을 마주하는 첫 순간부터 목을 넘긴 후 여운이 남는 단계까지, 향수의 노트를 탐두하듯 차의 향을 세심히 관찰해 보세요.</p>
+                
+                <div class="perfume-structure">
+                    <div class="perfume-layer">
+                        <div class="layer-title">TOP NOTE (첫 인상 - 우릴 때)</div>
+                        <div class="layer-content">
+                            <strong>STEAM AROMA</strong> <span>물이 찻잎에 닿는 순간 피어오르는 가볍고 화사한 휘발성 천연 에센스의 향</span>
+                        </div>
+                    </div>
+                    <div class="perfume-layer">
+                        <div class="layer-title">MIDDLE NOTE (본질 - 마실 때)</div>
+                        <div class="layer-content">
+                            <strong>CUP AROMA</strong> <span>차를 입에 머금었을 때 체온과 섞이며 코 속 전체를 채우는 묵직하고 고소한 향</span>
+                        </div>
+                    </div>
+                    <div class="perfume-layer">
+                        <div class="layer-title">BASE NOTE (여운 - 마신 후)</div>
+                        <div class="layer-content">
+                            <strong>AFTERTASTE</strong> <span>잔을 비운 후 혀끝과 목에 깊이 남아 은은하게 지속되는 마지막 잔향</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="clear"></div>
+    <footer class="c_m_12 c_12">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand c_m_12 c_6">
+                    <h2>CHA:DAUM</h2>
+                    <p>전통과 현대의 사이에서, 새로운 시선으로.</p>
+                </div>
+                <div class="footer-links c_m_12 c_6">
+                    <div class="link-group c_m_6 c_6">
+                        <h3>MENU</h3>
+                        <ul>
+                            <li><a href="blend.html">BLEND</a></li>
+                            <li><a href="teanote.html">TEA NOTE</a></li>
+                            <li><a href="aroma.html">AROMA</a></li>
+                            <li><a href="moment.html">MOMENT</a></li>
+                            <li><a href="brewing.html">BREWING</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group c_m_6 c_6">
+                        <h3>CUSTOMER</h3>
+                        <ul>
+                            <li><a href="#">고객센터</a></li>
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">1:1 문의</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            
+            <hr class="footer-divider">
+            
+            <div class="footer-bottom">
+                <div class="footer-info c_m_12 c_8">
+                    <p>상호명: 차:다움 | 대표자: 임유진 | 사업자등록번호: 2025-33845</p>
+                    <p>주소: 서울시 서울숲 차다움 빌딩 10층 | 이메일: limyujin@chadaum.com</p>
+                </div>
+                <div class="footer-copyright c_m_12 c_4">
+                    <p>&copy; 2026 CHA:DAUM. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

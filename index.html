@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>차의 재해석, 차:다움</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Thin.woff2') format('woff2');
+            font-weight: 100;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraLight.woff2') format('woff2');
+            font-weight: 200;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Light.woff2') format('woff2');
+            font-weight: 300;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Medium.woff2') format('woff2');
+            font-weight: 500;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2') format('woff2');
+            font-weight: 600;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraBold.woff2') format('woff2');
+            font-weight: 800;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Black.woff2') format('woff2');
+            font-weight: 900;
+            font-display: swap;
+        }
+
+        body {
+            width: 100%;
+            font-family: 'Pretendard', sans-serif;
+            background-color: #f8f6f1;
+        }
+        ul {
+            list-style-type: none;
+        }
+        .clear {
+            clear: both;
+        }
+        [class*="c_"] {
+            float: left;
+            width: 100%; 
+        }
+        @media only screen and (min-width : 600px) {
+            .c_m_1 {width: 8.33%;}
+            .c_m_2 {width: 16.66%;}
+            .c_m_3 {width: 25%;}
+            .c_m_4 {width: 33.33%;}
+            .c_m_5 {width: 41.66%;}
+            .c_m_6 {width: 50%;}
+            .c_m_7 {width: 58.33%;}
+            .c_m_8 {width: 66.66%;}
+            .c_m_9 {width: 75%;}
+            .c_m_10 {width: 83.33%;}
+            .c_m_11 {width: 91.66%;}
+            .c_m_12 {width: 100%;}
+        }
+        @media only screen and (min-width : 768px) {
+            .c_1 {width: 8.33%;}
+            .c_2 {width: 16.66%;}
+            .c_3 {width: 25%;}
+            .c_4 {width: 33.33%;}
+            .c_5 {width: 41.66%;}
+            .c_6 {width: 50%;}
+            .c_7 {width: 58.33%;}
+            .c_8 {width: 66.66%;}
+            .c_9 {width: 75%;}
+            .c_10 {width: 83.33%;}
+            .c_11 {width: 91.66%;}
+            .c_12 {width: 100%;}
+        }
+        header {
+            height: 30px;
+            display: flex;
+            align-items: center;
+            padding: 10px 80px 0 80px;
+            background-color: #1c1c1c;
+        }
+        header #login {
+            margin-left: auto;
+        }
+        header #login ul {
+            display: flex;
+            gap: 20px;
+        }
+        header #login li a {
+            color: #fafafa;
+            text-decoration: none;
+            font-size: 12px;
+            padding-left: 10px;
+        }
+        header #login li a:hover {
+            color: #FFA126;
+        }
+        #banner {
+            position: relative;
+            height: 440px;
+            margin-top: 0;
+            background: linear-gradient(to bottom, #1C1C1C 0%, #1C1C1C 60%, #f8f6f1 60%, #f8f6f1 100%);
+            overflow: hidden;
+            transition: height 0.3s ease;
+        }
+        #banner-title {
+            position: absolute;
+            left: 50%;
+            top: 100px;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            font-size: 240px;
+            font-weight: 900;
+            letter-spacing: -5px;
+            color: #FFA126;
+            line-height: 1;
+            z-index: 2; 
+            width: 100%;
+        }
+        #banner-bgtitle {
+            position: absolute;
+            left: 50%;
+            top: 153px;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            font-size: 240px;
+            font-weight: 900;
+            letter-spacing: -5px;
+            color: transparent;
+            -webkit-text-stroke: 1px #738a3d81;
+            line-height: 1;
+            z-index: 1;
+            width: 100%;
+        }
+        #banner img {
+            position: absolute;
+            height: 370px;
+            left: 50%;
+            top: 66%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+            opacity: 0.95;
+            filter: drop-shadow(0 30px 40px rgba(0,0,0,0.2));
+        }
+        @media only screen and (max-width: 1200px) {
+            header {
+            height: 30px;
+            display: flex;
+            align-items: center;
+            padding: 10px 25px 0 25px;
+            }
+            header #login ul {
+            display: flex;
+            gap: 5px;
+            }
+            header #login li a {
+                color: #fafafa;
+                text-decoration: none;
+                font-size: 10px;
+                padding-left: 20px;
+            }
+            #banner {
+                height: 35vw;
+                min-height: 180px;
+            }
+            #banner-title, #banner-bgtitle { 
+                font-size: 17vw; 
+                top: 3%;
+                transform: translate(-50%, 0);
+            }
+            #banner-bgtitle {
+                top: 11%;
+            }
+            #banner img {
+                height: 75%;
+                top: 65%;
+            }
+        }
+        #rolling-line-banner {
+            background-color: #1C1C1C;
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 12px;
+        }
+        #rolling-line-banner #rolling-track {
+            display: flex;
+            width: max-content;
+            animation: rolling 30s linear infinite;
+            gap: 50px;
+        }
+        #rolling-line-banner #rolling-track .track-text {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        #rolling-line-banner #rolling-track .track-text p {
+            font-size: 16px;
+            font-weight: 800;
+            color: #FFA126;
+            white-space: nowrap;
+        }
+        @keyframes rolling {
+            from { transform: translateX(-50%); }
+            to { transform: translateX(0); }
+        }
+        @media only screen and (max-width: 1200px) {
+            #rolling-line-banner #rolling-track .track-text {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            }
+            #rolling-line-banner #rolling-track {
+                display: flex;
+                width: max-content;
+                animation: rolling 30s linear infinite;
+                gap: 30px;
+            }
+            #rolling-line-banner #rolling-track .track-text p {
+                font-size: 12px;
+                font-weight: 800;
+                color: #FFA126;
+                white-space: nowrap;
+            }
+        }
+        #menu-wrapper {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 40px 10px;
+        }
+        .menu-item {
+            padding: 0 7px;
+            margin: 32px 0;
+        }
+        .menu-item ul {
+            width: 100%;
+            height: 250px;
+            background-color: #1C1C1C;
+        }
+        .menu-item ul:hover {
+            background-color: #738a3d;
+        }
+        .menu-item .menu_title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #fafafa;
+        }
+        .menu-item ul li a {
+            font-weight: 300;
+            display: block;
+            color: #fafafaab;
+            font-size: 13px;
+            text-decoration: none;
+            line-height: 143%;
+            padding: 28px;
+        }
+        .menu-item img {
+            width: 60px;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            float: left;
+            margin: 20px 10px 20px 0;
+        }
+
+        .c_5columns { width: 20%; }
+        @media only screen and (max-width : 850px) {
+            .c_5columns { width: 50%; } 
+            #menu-wrapper {
+            padding: 30px 5px;
+            }
+            .menu-item {
+                margin: 8px 0;
+            }
+        }
+        @media only screen and (max-width : 480px) {
+            .c_5columns { width: 100%; }
+            #menu-wrapper {
+            padding: 30px 5px;
+            }
+            .menu-item {
+                margin: 8px 0;
+            }
+        }
+        
+        #gallery {
+            width: 100%;
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 0 !important;
+        }
+        #gallery .gal-img-wp img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            display: block;
+            border: solid 1px #1C1C1C;
+        }
+
+        .c_gal_col { width: 20%; }
+        @media only screen and (max-width : 1024px) {
+            .c_gal_col { width: 25%; }
+            #gallery {
+            width: 100%;
+            max-width: 1800px;
+            margin-top: 30px;
+            }
+        }
+        footer {
+            background-color: #1c1c1c;
+            color: #fafafa;
+            padding: 60px 20px 30px 20px;
+            font-size: 14px;
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-brand h2 {
+            font-size: 24px;
+            font-weight: 800;
+            color: #FFA126; 
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+        .footer-brand p {
+            color: #b3b3b3;
+            max-width: 300px;
+            line-height: 1.6;
+        }
+        .link-group h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #fafafa;
+            margin-bottom: 15px;
+        }
+        .link-group li {
+            margin-bottom: 10px;
+        }
+        .link-group li a {
+            color: #b3b3b3;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .link-group li a:hover {
+            color: #FFA126;
+        }
+        .footer-divider {
+            border: 0;
+            height: 1px;
+            background-color: #333333;
+            margin: 30px 0;
+        }
+        .footer-info p {
+            color: #888888;
+            line-height: 1.8;
+            font-size: 12px;
+        }
+        .footer-copyright p {
+            color: #666666;
+            font-size: 12px;
+        }
+        @media only screen and (max-width : 1024px) {
+            footer {
+                padding: 40px 20px 30px 20px;
+            }
+            .footer-brand {
+                margin-bottom: 15px;
+            }
+            .link-group h3 {
+            margin-top: 15px;
+            }
+            .footer-copyright {
+                text-align: left !important;
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="c_12">
+        <nav id="login">
+            <ul>
+                <li><a href="./login.html">로그인</a></li>
+                <li><a href="./signup.html">회원가입</a></li>
+                <li><a href="./cart.html">장바구니</a></li>
+                <li><a href="./mypage.html">마이페이지</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="clear"></div>
+
+    <section id="banner" class="c_12">
+        <h1 id="banner-title">CHA:DAUM</h1>
+        <h1 id="banner-bgtitle">CHA:DAUM</h1>
+        <img src="./image/main_tea.png" class="tea-cup">
+    </section>
+    <div class="clear"></div>
+
+    <section id="rolling-line-banner" class="c_12">
+        <div id="rolling-track">
+            <div class="track-text">
+                <p>CHA:DAUM</p><p>CHA:DAUM</p><p>CHA:DAUM</p><p>CHA:DAUM</p><p>CHA:DAUM</p>
+                <p>CHA:DAUM</p><p>CHA:DAUM</p><p>CHA:DAUM</p><p>CHA:DAUM</p><p>CHA:DAUM</p>
+            </div>
+            <div class="track-text">
+                <p>CHA:DAUM</p><p>CHA:DAUM</p><p>CHA:DAUM</p><p>CHA:DAUM</p><p>CHA:DAUM</p>
+                <p>CHA:DAUM</p><p>CHA:DAUM</p><p>CHA:DAUM</p><p>CHA:DAUM</p><p>CHA:DAUM</p>
+            </div>
+        </div>
+    </section>
+    <div class="clear"></div>
+
+    <section id="menu-wrapper">
+        <div class="menu-item c_5columns">
+            <ul id="menu_1">
+                <li>
+                    <a href="blend.html">
+                        <div class="menu_title">BLEND</div>
+                        <img src="./image/tea_weather_1.jpg">
+                        <img src="./image/tea_weather_2.jpg">
+                        <div class="clear"></div>
+                        시그니처 블랜드<br>계절, 날씨별 차<br>DIY 블랜딩
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="menu-item c_5columns">
+            <ul id="menu_2">
+                <li>
+                    <a href="teanote.html">
+                        <div class="menu_title">TEA NOTE</div>
+                        <img src="./image/tea_history_1.jpg">
+                        <img src="./image/tea_history_2.jpg">
+                        <div class="clear"></div>
+                        차의 역사<br>종류별 가이드<br>성분 및 효능
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="menu-item c_5columns">
+            <ul id="menu_3">
+                <li>
+                    <a href="aroma.html">
+                        <div class="menu_title">AROMA</div>
+                        <img src="./image/tea_romantic.jpg">
+                        <img src="./image/relax.jpg">
+                        <div class="clear"></div>
+                        향기, 맛 별 큐레이션<br>아로마 테라피<br>차 퍼퓸 가이드
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="menu-item c_5columns">
+            <ul id="menu_4">
+                <li>
+                    <a href="moment.html">
+                        <div class="menu_title">MOMENT</div>
+                        <img src="./image/tea_timing_1.jpg">
+                        <img src="./image/tea_timing_2.jpg">
+                        <div class="clear"></div>
+                        일상의 차<br>특별한 날의 차<br>상황별 추천
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="menu-item c_5columns">
+            <ul id="menu_5">
+                <li>
+                    <a href="brewing.html">
+                        <div class="menu_title">BREWING</div>
+                        <img src="./image/tea.jpg">
+                        <img src="./image/teabag.jpg">
+                        <div class="clear"></div>
+                        온도와 시간<br>다구 사용법<br>편리하게 즐기기
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <div class="clear"></div>
+    <section id="gallery" class="c_12">
+        <div class="gal-img-wp c_gal_col"><img src="./image/subbanner_drytealeaves (2).jpg"></div>
+        <div class="gal-img-wp c_gal_col"><img src="./image/subbanner_tea (1).jpg"></div>
+        <div class="gal-img-wp c_gal_col"><img src="./image/subbanner_teabag.jpg"></div>
+        <div class="gal-img-wp c_gal_col"><img src="./image/subbanner_tealeaf.jpg"></div>
+        <div class="gal-img-wp c_gal_col"><img src="./image/subbanner_tea (4).jpg"></div>
+        <div class="gal-img-wp c_gal_col"><img src="./image/subbanner_teafarm(1).jpg"></div>
+        <div class="gal-img-wp c_gal_col"><img src="./image/subbanner_drytealeaves.jpg"></div>
+        <div class="gal-img-wp c_gal_col"><img src="./image/subbanner_tea (2).jpg"></div>
+        <div class="gal-img-wp c_gal_col"><img src="./image/subbanner_tea (3).jpg"></div>
+        <div class="gal-img-wp c_gal_col"><img src="./image/subbanner_drytealeaves (3).jpg"></div>
+    </section>
+    <div class="clear"></div>
+
+    <footer class="c_12">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand c_m_12 c_6">
+                    <h2>CHA:DAUM</h2>
+                    <p>전통과 현대의 사이에서, 새로운 시선으로.</p>
+                </div>
+                <div class="footer-links c_m_12 c_6">
+                    <div class="link-group c_m_6 c_6">
+                        <h3>MENU</h3>
+                        <ul>
+                            <li><a href="blend.html">BLEND</a></li>
+                            <li><a href="teanote.html">TEA NOTE</a></li>
+                            <li><a href="aroma.html">AROMA</a></li>
+                            <li><a href="moment.html">MOMENT</a></li>
+                            <li><a href="brewing.html">BREWING</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group c_m_6 c_6">
+                        <h3>CUSTOMER</h3>
+                        <ul>
+                            <li><a href="#">고객센터</a></li>
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">1:1 문의</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            
+            <hr class="footer-divider">
+            
+            <div class="footer-bottom">
+                <div class="footer-info c_m_12 c_8">
+                    <p>상호명: 차:다움 | 대표자: 임유진 | 사업자등록번호: 2025-33845</p>
+                    <p>주소: 서울시 서울숲 차다움 빌딩 10층 | 이메일: limyujin@chadaum.com</p>
+                </div>
+                <div class="footer-copyright c_m_12 c_4">
+                    <p>&copy; 2026 CHA:DAUM. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

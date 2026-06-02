@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>차:다움 | 회원가입</title>
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family:'Pretendard', sans-serif;
+    }
+    @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-display: swap;
+    }
+    @font-face {
+        font-family: 'Pretendard';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2') format('woff2');
+        font-weight: 600;
+        font-display: swap;
+    }
+    @font-face {
+        font-family: 'Pretendard';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Bold.woff2') format('woff2');
+        font-weight: 700;
+        font-display: swap;
+    }
+    
+    html, body {
+        width: 100%;
+        background: #1c1c1c;
+    }
+    @media only screen and (min-width : 600px) {
+        .c_m_1 {width: 8.33%;}
+        .c_m_2 {width: 16.66%;}
+        .c_m_3 {width: 25%;}
+        .c_m_4 {width: 33.33%;}
+        .c_m_5 {width: 41.66%;}
+        .c_m_6 {width: 50%;}
+        .c_m_7 {width: 58.33%;}
+        .c_m_8 {width: 66.66%;}
+        .c_m_9 {width: 75%;}
+        .c_m_10 {width: 83.33%;}
+        .c_m_11 {width: 91.66%;}
+        .c_m_12 {width: 100%;}
+    }
+    @media only screen and (min-width : 768px) {
+        .c_1 {width: 8.33%;}
+        .c_2 {width: 16.66%;}
+        .c_3 {width: 25%;}
+        .c_4 {width: 33.33%;}
+        .c_5 {width: 41.66%;}
+        .c_6 {width: 50%;}
+        .c_7 {width: 58.33%;}
+        .c_8 {width: 66.66%;}
+        .c_9 {width: 75%;}
+        .c_10 {width: 83.33%;}
+        .c_11 {width: 91.66%;}
+        .c_12 {width: 100%;}
+    }
+    @media only screen and (max-width: 1024px) {
+        [class*="c_"] {
+            float: left;
+            width: 100%;
+        }
+        .c_m_4 { width: 33.33% !important; }
+        .c_m_6 { width: 50% !important; }
+        .c_m_12 { width: 100% !important; }
+    }
+    header {
+        height: 50px; 
+        display: flex;
+        align-items: center;
+        justify-content: space-between; 
+        padding: 0 80px;
+        background-color: #1c1c1c;
+        width: 100%;
+    }   
+    header .home-logo a {
+        color: #FFA126;
+        text-decoration: none;
+        font-weight: 900;
+        font-size: 18px;
+        letter-spacing: 1px;
+    }
+    header #main_nav ul {
+        display: flex;
+        gap: 35px; 
+        list-style: none;
+    }
+    header #main_nav ul li a {
+        color: #fafafa;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        transition: color 0.2s ease;
+    }
+    header #main_nav ul li a:hover { 
+        color: #738A3D; 
+    }
+    header #login ul {
+        display: flex;
+        gap: 20px;
+        list-style: none;
+    }
+    header #login li a {
+        color: #b3b3b3; 
+        text-decoration: none;
+        font-size: 12px;
+        transition: color 0.2s ease;
+    }
+    header #login li a:hover { 
+        color: #FFA126; 
+    }
+    .main-container {
+        width: 100%;
+        padding: 120px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .login-box {
+        width: 360px;
+        padding: 50px 40px;
+        background: #ffffff;
+        border: 1px solid #e7e7e7;
+        border-radius: 10px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    }
+    .login-title {
+        text-align: center;
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 30px;
+    }
+    .login-title a {
+        text-decoration: none;
+        color: #222;
+        letter-spacing: 0.5px;
+    }
+    .login-title a:hover {
+        color: #FFA126;
+    }
+    .main-container {
+        width: 100%;
+        padding: 80px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .signup-box{
+        width:380px;
+        padding:50px 40px;
+        background:#ffffff;
+        border:1px solid #e7e7e7;
+        border-radius: 10px;
+        box-shadow:0 20px 50px rgba(0,0,0,0.3);
+    }
+    .signup-title{
+        text-align: center;
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: #1C1C1C;
+    }
+    .subtitle{
+        text-align:center;
+        font-size:12px;
+        color:#888;
+        margin-bottom:15px;
+    }
+    .input-box{
+        width:100%;
+        margin-bottom:12px;
+    }
+    .input-box input{
+        width:100%;
+        padding:13px 12px;
+        border:1px solid #ddd;
+        border-radius: 6px;
+        outline:none;
+        font-size:13px;
+    }
+    .input-box input:focus{
+        border-color:#FFA126;
+    }
+    /* 버튼 */
+    .signup-btn{
+        width:100%;
+        padding:14px;
+        margin-top:10px;
+        background:#1C1C1C;
+        color:#fff;
+        border:none;
+        border-radius: 6px;
+        cursor:pointer;
+        font-size:14px;
+        font-weight:600;
+    }
+    .signup-btn:hover{
+        background:#738A3D;
+        color:#1C1C1C;
+    }
+    .links{
+        text-align:center;
+        margin-top:15px;
+        font-size:12px;
+    }
+
+    .links a{
+        color:#888;
+        font-weight: bold;
+        text-decoration:none;
+    }
+    .links a:hover{
+        color:#FFA126;
+    }
+    .terms{
+        font-size:11px;
+        color:#aaa;
+        margin-top:10px;
+        line-height:1.4;
+    }
+    @media only screen and (max-width : 1024px) {
+        header { 
+            padding: 10px 20px; 
+            flex-wrap: wrap; 
+            height: auto; 
+            gap: 10px; 
+        }
+        header #main_nav { 
+            width: 100%; 
+            order: 3; 
+            text-align: center; 
+        }
+        header #main_nav ul { 
+            gap: 20px; 
+            justify-content: center; 
+        }
+        header #main_nav ul li a { 
+            font-size: 13px; 
+        }
+        header #login { 
+            margin-left: auto; 
+            order: 2; 
+        }
+    }
+</style>
+
+</head>
+
+<body>
+    <header>
+        <div class="home-logo"><a href="index.html">CHA:DAUM</a></div>
+        <nav id="main_nav">
+            <ul>
+                <li><a href="blend.html">BLEND</a></li>
+                <li><a href="teanote.html">TEA NOTE</a></li>
+                <li><a href="aroma.html">AROMA</a></li>
+                <li><a href="moment.html">MOMENT</a></li>
+                <li><a href="brewing.html">BREWING</a></li>
+            </ul>
+        </nav>
+        <nav id="login">
+            <ul>
+                <li><a href="./login.html">로그인</a></li>
+                <li><a href="./signup.html">회원가입</a></li>
+                <li><a href="./cart.html">장바구니</a></li>
+                <li><a href="./mypage.html">마이페이지</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="main-container">
+        <div class="signup-box">
+
+            <div class="signup-title">CHA:DAUM</div>
+            <div class="subtitle">차의 재해석, 차:다움에<br>오신걸 환영합니다.</div>
+
+            <div class="input-box">
+                <input type="text" placeholder="아이디">
+            </div>
+
+            <div class="input-box">
+                <input type="password" placeholder="비밀번호">
+            </div>
+
+            <div class="input-box">
+                <input type="password" placeholder="비밀번호 확인">
+            </div>
+
+            <div class="input-box">
+                <input type="email" placeholder="이메일">
+            </div>
+
+            <div class="input-box">
+                <input type="text" placeholder="닉네임">
+            </div>
+
+            <button class="signup-btn">회원가입</button>
+
+            <div class="terms">
+                가입 시 이용약관 및 개인정보 처리방침에 동의한 것으로 간주됩니다.
+            </div>
+
+            <div class="links">
+                <a href="#">로그인으로 돌아가기</a>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>차:다움 | BLEND</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pretendard', sans-serif;
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2') format('woff2');
+            font-weight: 600;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Bold.woff2') format('woff2');
+            font-weight: 700;
+        }
+        body {
+            width: 100%;
+            background-color: #f8f6f1;
+            color: #1c1c1c;
+        }
+        .clear { clear: both; }
+        @media only screen and (min-width : 600px) {
+            .c_m_1 {width: 8.33%;}
+            .c_m_2 {width: 16.66%;}
+            .c_m_3 {width: 25%;}
+            .c_m_4 {width: 33.33%;}
+            .c_m_5 {width: 41.66%;}
+            .c_m_6 {width: 50%;}
+            .c_m_7 {width: 58.33%;}
+            .c_m_8 {width: 66.66%;}
+            .c_m_9 {width: 75%;}
+            .c_m_10 {width: 83.33%;}
+            .c_m_11 {width: 91.66%;}
+            .c_m_12 {width: 100%;}
+        }
+        @media only screen and (min-width : 768px) {
+            .c_1 {width: 8.33%;}
+            .c_2 {width: 16.66%;}
+            .c_3 {width: 25%;}
+            .c_4 {width: 33.33%;}
+            .c_5 {width: 41.66%;}
+            .c_6 {width: 50%;}
+            .c_7 {width: 58.33%;}
+            .c_8 {width: 66.66%;}
+            .c_9 {width: 75%;}
+            .c_10 {width: 83.33%;}
+            .c_11 {width: 91.66%;}
+            .c_12 {width: 100%;}
+        }
+        @media only screen and (max-width: 1024px) {
+            [class*="c_"] {
+                float: left;
+                width: 100%;
+            }
+            .c_m_6 { width: 50% !important; }
+            .c_m_12 { width: 100% !important; }
+        }
+        header {
+            height: 50px; 
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 80px;
+            background-color: #1c1c1c;
+            width: 100%;
+        }   
+        header .home-logo a {
+            color: #FFA126;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 18px;
+            letter-spacing: 1px;
+        }
+        header #main_nav ul {
+            display: flex;
+            gap: 35px; 
+            list-style: none;
+        }
+        header #main_nav ul li a {
+            color: #fafafa;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: color 0.2s ease;
+        }
+        header #main_nav ul li a:hover { 
+            color: #738A3D; 
+        }
+        
+        header #login ul {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+        header #login li a {
+            color: #b3b3b3; 
+            text-decoration: none;
+            font-size: 12px;
+            transition: color 0.2s ease;
+        }
+        header #login li a:hover { 
+            color: #FFA126; 
+        }
+        .sub-header {
+            background-color: #1c1c1c;
+            text-align: center;
+            padding: 35px 20px 60px; 
+        }
+        .sub-header h1 {
+            font-size: 100px; 
+            font-weight: 700;
+            color: #FFA126;
+            letter-spacing: 0.8px;
+            margin-bottom: 15px;
+        }
+        .sub-header p {
+            font-size: 16px; 
+            color: #f8f6f1;
+            font-weight: 600;
+        }
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 85px 20px; 
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px; 
+        }
+        .section-title h2 {
+            font-size: 36px; 
+            font-weight: 700;
+            color: #1c1c1c;
+            margin-bottom: 10px;
+        }
+        .section-title p {
+            font-size: 16px; 
+            color: #888;
+        }
+        .signature-grid {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .signature-card {
+            background-color: #1c1c1c;
+            color: #fafafa;
+            width: 31%;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .card-img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background-color: #333;
+            overflow: hidden;
+        }
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .card-txt {
+            padding: 30px; 
+        }
+        .card-txt h3 {
+            font-size: 22px; 
+            color: #FFA126;
+            margin-bottom: 12px;
+        }
+        .card-txt p {
+            font-size: 14px; 
+            color: #b3b3b3;
+            line-height: 1.6;
+        }
+        #weather-blend {
+            background-color: #edededf0;
+            max-width: 100%;
+        }
+        .weather-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .weather-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 40px; 
+        }
+        .weather-row:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        .weather-img {
+            width: 48%;
+            aspect-ratio: 16/9;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .weather-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .weather-txt {
+            width: 45%;
+        }
+        .weather-txt .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background-color: #738A3D;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            border-radius: 30px;
+        }
+        .weather-txt h3 {
+            font-size: 28px; 
+            margin-bottom: 15px;
+            color: #1c1c1c;
+        }
+        .weather-txt p {
+            font-size: 15px; 
+            color: #555;
+            line-height: 1.7;
+        }
+        .diy-banner {
+            background-color: #1c1c1c;
+            color: #fafafa;
+            padding: 60px; 
+            text-align: center;
+            border-radius: 10px;
+        }
+        .diy-banner h3 {
+            font-size: 32px; 
+            color: #FFA126;
+            margin-bottom: 15px;
+        }
+        .diy-banner p.diy-intro-p {
+            font-size: 16px; 
+            color: #b3b3b3;
+            line-height: 1.8;
+            margin-bottom: 35px;
+        }
+        .diy-steps {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-bottom: 40px;
+        }
+        .step-item {
+            width: 25%;
+            text-align: center;
+        }
+        .step-num {
+            font-size: 24px; 
+            font-weight: 700;
+            color: #738A3D;
+            margin-bottom: 10px;
+        }
+        .step-item h4 {
+            font-size: 18px; 
+            margin-bottom: 8px;
+            color: #fafafa;
+        }
+        .step-item p {
+            font-size: 13px; 
+            color: #888;
+        }
+        .diy-btn {
+            display: inline-block;
+            padding: 15px 40px; 
+            background-color: #738A3D;
+            color: #fafafa;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            border-radius: 6px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        .diy-btn:hover {
+            background-color: #FFA126;
+            color: #1c1c1c;
+        }
+        footer {
+            background-color: #1c1c1c;
+            color: #fafafa;
+            padding: 60px 20px 30px 20px;
+            font-size: 14px;
+        }
+        .footer-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        .footer-top { 
+            display: flex; 
+            justify-content: space-between; 
+            flex-wrap: wrap; 
+            gap: 40px; 
+            margin-bottom: 40px; 
+        }
+        .footer-brand h2 { 
+            font-size: 24px; 
+            font-weight: 800; 
+            color: #FFA126; 
+            margin-bottom: 12px; 
+        }
+        .footer-brand p { 
+            color: #b3b3b3; 
+            max-width: 300px; 
+            line-height: 1.6; 
+        }
+        .footer-links { 
+            display: flex; 
+            gap: 60px; 
+        }
+        .link-group h3 { 
+            font-size: 16px; 
+            font-weight: 600; 
+            color: #fafafa; 
+            margin-bottom: 15px; 
+        }
+        .link-group ul { 
+            padding: 0; 
+            list-style: none; 
+        }
+        .link-group li { 
+            margin-bottom: 10px; 
+        }
+        .link-group li a { 
+            color: #b3b3b3; 
+            text-decoration: none; 
+        }
+        .link-group li a:hover { 
+            color: #FFA126; 
+        }
+        .footer-divider { 
+            border: 0; 
+            height: 1px; 
+            background-color: #1c1c1c; 
+            margin: 30px 0; 
+            width: 100%; 
+            clear: both; 
+        }
+        .footer-bottom { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-end; 
+            flex-wrap: wrap; 
+            gap: 20px; 
+        }
+        .footer-info p { 
+            color: #888888; 
+            line-height: 1.8; 
+            font-size: 12px; 
+        }
+        .footer-copyright p { 
+            color: #666666; 
+            font-size: 12px; 
+        }
+        @media only screen and (max-width: 1024px) {
+            header { 
+                padding: 10px 20px; 
+                flex-wrap: wrap; 
+                height: auto; 
+                gap: 10px; 
+            }
+            header #main_nav { 
+                width: 100%; 
+                order: 3; 
+                text-align: center; 
+            }
+            header #main_nav ul { 
+                gap: 20px; 
+                justify-content: center; 
+            }
+            header #main_nav ul li a { 
+                font-size: 13px; 
+            }
+            header #login { 
+                margin-left: auto; 
+                order: 2; 
+            }
+            .sub-header h1 { 
+                font-size: 10vw; 
+            }
+            section { 
+                padding: 50px 20px; 
+            }
+            .section-title { 
+                margin-bottom: 35px;
+            }
+            .section-title h2 { 
+                font-size: 28px; 
+                margin-bottom: 8px; 
+            }
+            .section-title p { 
+                font-size: 14px; 
+            }
+            .signature-grid { 
+                display: block;
+            }
+            .signature-card { 
+                width: 100% !important; 
+                margin-bottom: 20px; 
+            }
+            .card-txt { 
+                padding: 22px; 
+            }
+            .card-txt h3 { 
+                font-size: 18px; 
+                margin-bottom: 10px; 
+            }
+            .card-txt p { 
+                font-size: 13px; 
+            }
+            .weather-row { 
+                display: block; 
+                margin-bottom: 40px; 
+            }
+            .weather-img, .weather-txt { 
+                width: 100% !important; 
+            }
+            .weather-txt { 
+                padding: 15px 0; 
+            }
+            .weather-txt h3 { 
+                font-size: 22px; 
+                margin-bottom: 12px; 
+            }
+            .weather-txt p { 
+                font-size: 14px; 
+                line-height: 1.6; 
+            }
+            .weather-txt .tag { 
+                padding: 3px 10px; 
+                font-size: 11px; 
+                margin-bottom: 12px; 
+            }
+            .diy-banner { 
+                padding: 45px 20px; 
+                border-radius: 8px; 
+            }
+            .diy-banner h3 { 
+                font-size: 26px; 
+                margin-bottom: 12px; 
+            }
+            .diy-banner p.diy-intro-p { 
+                font-size: 14px; 
+                line-height: 1.7; 
+                margin-bottom: 30px; 
+            }
+            .diy-steps { 
+                display: block; 
+                margin-bottom: 30px; 
+            }
+            .step-item { 
+                width: 100% !important; 
+                padding: 15px 0; 
+            }
+            .step-num { 
+                font-size: 20px; 
+                margin-bottom: 8px; 
+            }
+            .step-item h4 { 
+                font-size: 16px; 
+                margin-bottom: 6px; 
+            }
+            .step-item p { 
+                font-size: 12px; 
+            }
+            .diy-btn { 
+                padding: 12px 35px; 
+                font-size: 14px; 
+            }
+            footer { 
+                padding: 40px 20px 30px 20px; 
+            }
+            .footer-top { 
+                flex-direction: column; 
+                gap: 20px; 
+            }
+            .footer-bottom { 
+                flex-direction: column; 
+                align-items: flex-start; 
+                gap: 10px; 
+            }
+            .footer-copyright { 
+                text-align: left !important; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="c_m_12 c_12">
+        <div class="home-logo"><a href="index.html">CHA:DAUM</a></div>
+        <nav id="main_nav">
+            <ul>
+                <li><a href="blend.html">BLEND</a></li>
+                <li><a href="teanote.html">TEA NOTE</a></li>
+                <li><a href="aroma.html">AROMA</a></li>
+                <li><a href="moment.html">MOMENT</a></li>
+                <li><a href="brewing.html">BREWING</a></li>
+            </ul>
+        </nav>
+        <nav id="login">
+            <ul>
+                <li><a href="./login.html">로그인</a></li>
+                <li><a href="./signup.html">회원가입</a></li>
+                <li><a href="./cart.html">장바구니</a></li>
+                <li><a href="./mypage.html">마이페이지</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="clear"></div>
+
+    <div class="sub-header c_m_12 c_12">
+        <h1>BLEND</h1>
+        <p>새로운 시선의 차:다움 향미</p>
+    </div>
+    <div class="clear"></div>
+
+    <section id="signature-blend" class="c_m_12 c_12">
+        <div class="section-title">
+            <h2>SIGNATURE BLEND</h2>
+            <p>차:다움이 엄선하여 완성한 세 가지 작품</p>
+        </div>
+        
+        <div class="signature-grid">
+            <div class="signature-card c_m_12 c_4">
+                <div class="card-img"><img src="./image/blend_sig (1).png"></div>
+                <div class="card-txt">
+                    <h3>01. 숲의 새벽</h3>
+                    <p>깊은 풍미의 우롱차 베이스에 은은한 대나무 잎 향과 상쾌한 민트를 더해 새벽녘 차분한 숲길을 걷는 듯한 청량감을 선사합니다.</p>
+                </div>
+            </div>
+            
+            <div class="signature-card c_m_12 c_4">
+                <div class="card-img"><img src="./image/blend_sig (2).png"></div>
+                <div class="card-txt">
+                    <h3>02. 노을빛 서정</h3>
+                    <p>달콤한 루이보스티를 베이스로 말린 사과 칩과 따뜻한 시나몬을 조화롭게 배합하여 저녁노을처럼 따스하고 포근하게 감싸 안아줍니다.</p>
+                </div>
+            </div>
+            
+            <div class="signature-card c_m_12 c_4">
+                <div class="card-img"><img src="./image/blend_sig (3).png"></div>
+                <div class="card-txt">
+                    <h3>03. 윤슬의 고백</h3>
+                    <p>산뜻한 백차 위, 싱그러운 감귤 피와 은은한 자스민 꽃잎을 블랜딩하여 반짝이는 바다 윤슬처럼 화사하고 싱그러운 순간을 담았습니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="clear"></div>
+
+    <section id="weather-blend" class="c_m_12 c_12">
+        <div class="weather-container">
+            <div class="section-title" style="padding-top: 20px;">
+                <h2>SEASON & WEATHER</h2>
+                <p>시시각각 변하는 계절의 온도와 날씨의 무드에 맞춘 완벽한 처방</p>
+            </div>
+            
+            <div class="weather-row">
+                <div class="weather-img c_m_12 c_6"><img src="./image/blend_weather (1).png" alt="비오는 날의 차"></div>
+                <div class="weather-txt c_m_12 c_6">
+                    <span class="tag">비 오거나 흐린 날</span>
+                    <h3>습한 공기를 잠재우는 훈연의 정취</h3>
+                    <p>묵직하게 가라앉은 비 오는 날에는 특유의 스모키한 향이 일품인 전통 정산소종 베이스의 블랜드 티를 추천할게요.<br>흐린 하늘 아래 차분히 마음을 가다듬고 온전한 휴식을 가질 수 있도록 돕습니다.</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            
+            <div class="weather-row">
+                <div class="weather-img c_m_12 c_6"><img src="./image/blend_weather (2).png" alt="햇살 맑은 날의 차"></div>
+                <div class="weather-txt c_m_12 c_6">
+                    <span class="tag">햇살 가득한 날</span>
+                    <h3>눈부신 오후를 깨우는 청량함 한 잔</h3>
+                    <p>지치기 쉬운 맑은 날 오후에는 비타민 가득한 히비스커스와 상큼한 청포도 향이 가미된 아이스 블랜딩 티가 제격이죠.<br>입안 가득 청량한 자극을 주어 일상에 새로운 활력을 불어넣어 줍니다.</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </section>
+    <div class="clear"></div>
+
+    <section id="diy-blend" class="c_m_12 c_12">
+        <div class="section-title">
+            <h2>DIY BLENDING</h2>
+            <p>베이스부터 토핑까지, 나만의 취향으로 재해석하는 단 하나의 차</p>
+        </div>
+        
+        <div class="diy-banner">
+            <h3>나만의 '차:다움' 만들기</h3>
+            <p class="diy-intro-p">공식에 얽매이지 마세요. 당신의 시간, 오늘의 기분에 맞춰<br>차:다움이 큐레이션 한 베이스와 천연 재료들을 직접 조합해 보세요.</p>
+            
+            <div class="diy-steps">
+                <div class="step-item c_m_12 c_4">
+                    <div class="step-num">01</div>
+                    <h4>Base Pick</h4>
+                    <p>녹차, 홍차, 백차, 루이보스 등<br>중심이 될 차잎을 고릅니다.</p>
+                </div>
+                <div class="step-item c_m_12 c_4">
+                    <div class="step-num">02</div>
+                    <h4>Flavor Layer</h4>
+                    <p>말린 과일, 허브, 꽃잎 등<br>향과 깊이를 더할 토핑을 선택합니다.</p>
+                </div>
+                <div class="step-item c_m_12 c_4">
+                    <div class="step-num">03</div>
+                    <h4>Brewing Guide</h4>
+                    <p>나만의 조합에 맞는<br>최적의 온도와 시간을 안내받습니다.</p>
+                </div>
+            </div>
+            
+            <a href="#" class="diy-btn">DIY 블랜딩 시뮬레이터 시작하기</a>
+        </div>
+    </section>
+    <div class="clear"></div>
+
+    <footer class="c_m_12 c_12">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand c_m_12 c_6">
+                    <h2>CHA:DAUM</h2>
+                    <p>전통과 현대의 사이에서, 새로운 시선으로.</p>
+                </div>
+                <div class="footer-links c_m_12 c_6">
+                    <div class="link-group c_m_6 c_6">
+                        <h3>MENU</h3>
+                        <ul>
+                            <li><a href="blend.html">BLEND</a></li>
+                            <li><a href="teanote.html">TEA NOTE</a></li>
+                            <li><a href="aroma.html">AROMA</a></li>
+                            <li><a href="moment.html">MOMENT</a></li>
+                            <li><a href="brewing.html">BREWING</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group c_m_6 c_6">
+                        <h3>CUSTOMER</h3>
+                        <ul>
+                            <li><a href="#">고객센터</a></li>
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">1:1 문의</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="footer-divider">
+            
+            <div class="footer-bottom">
+                <div class="footer-info c_m_12 c_8">
+                    <p>상호명: 차:다움 | 대표자: 임유진 | 사업자등록번호: 2025-33845</p>
+                    <p>주소: 서울시 서울숲 차다움 빌딩 10층 | 이메일: limyujin@chadaum.com</p>
+                </div>
+                <div class="footer-copyright c_m_12 c_4" style="text-align: right;">
+                    <p>&copy; 2026 CHA:DAUM. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

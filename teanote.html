@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>차:다움 | TEA NOTE</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Pretendard', sans-serif;
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2') format('woff2');
+            font-weight: 600;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Pretendard';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-display: swap;
+        }
+        body {
+            width: 100%;
+            background-color: #f8f6f1;
+            color: #1c1c1c;
+        }
+        .clear { clear: both; }
+        @media only screen and (min-width : 600px) {
+            .c_m_1 {width: 8.33%;}
+            .c_m_2 {width: 16.66%;}
+            .c_m_3 {width: 25%;}
+            .c_m_4 {width: 33.33%;}
+            .c_m_5 {width: 41.66%;}
+            .c_m_6 {width: 50%;}
+            .c_m_7 {width: 58.33%;}
+            .c_m_8 {width: 66.66%;}
+            .c_m_9 {width: 75%;}
+            .c_m_10 {width: 83.33%;}
+            .c_m_11 {width: 91.66%;}
+            .c_m_12 {width: 100%;}
+        }
+        @media only screen and (min-width : 768px) {
+            .c_1 {width: 8.33%;}
+            .c_2 {width: 16.66%;}
+            .c_3 {width: 25%;}
+            .c_4 {width: 33.33%;}
+            .c_5 {width: 41.66%;}
+            .c_6 {width: 50%;}
+            .c_7 {width: 58.33%;}
+            .c_8 {width: 66.66%;}
+            .c_9 {width: 75%;}
+            .c_10 {width: 83.33%;}
+            .c_11 {width: 91.66%;}
+            .c_12 {width: 100%;}
+        }
+        @media only screen and (max-width: 1024px) {
+            [class*="c_"] {
+                float: left;
+                width: 100%;
+            }
+            .c_m_4 { width: 33.33% !important; }
+            .c_m_6 { width: 50% !important; }
+            .c_m_12 { width: 100% !important; }
+        }
+        header {
+            height: 50px; 
+            display: flex;
+            align-items: center;
+            justify-content: space-between; 
+            padding: 0 80px;
+            background-color: #1c1c1c;
+            width: 100%;
+        }   
+        header .home-logo a {
+            color: #FFA126;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 18px;
+            letter-spacing: 1px;
+        }
+        header #main_nav ul {
+            display: flex;
+            gap: 35px; 
+            list-style: none;
+        }
+        header #main_nav ul li a {
+            color: #fafafa;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: color 0.2s ease;
+        }
+        header #main_nav ul li a:hover { 
+            color: #738A3D; 
+        }
+        
+        header #login ul {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+        header #login li a {
+            color: #b3b3b3; 
+            text-decoration: none;
+            font-size: 12px;
+            transition: color 0.2s ease;
+        }
+        header #login li a:hover { 
+            color: #FFA126; 
+        }
+        .sub-header {
+            background-color: #1c1c1c;
+            text-align: center;
+            padding: 35px 20px 60px; 
+        }
+        .sub-header h1 {
+            font-size: 100px; 
+            font-weight: 700;
+            color: #FFA126;
+            letter-spacing: 0.8px;
+            margin-bottom: 15px;
+        }
+        .sub-header p {
+            font-size: 16px; 
+            color: #f8f6f1;
+            font-weight: 600;
+        }
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 85px 20px; 
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px; 
+        }
+        .section-title h2 {
+            font-size: 36px; 
+            font-weight: 700;
+            color: #1c1c1c;
+            margin-bottom: 10px;
+        }
+        .section-title p {
+            font-size: 16px; 
+            color: #888;
+        }
+        .history-timeline {
+            position: relative;
+            max-width: 880px;
+            margin: 0 auto;
+            padding-left: 30px;
+            border-left: 2px solid #738A3D;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 55px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -37px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #738A3D;
+        }
+        .timeline-year {
+            font-size: 20px;
+            font-weight: 700;
+            color: #FFA126;
+            margin-bottom: 8px;
+        }
+        .timeline-content h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #1c1c1c;
+        }
+        .timeline-content p {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.7;
+        }
+        #tea-guide-section {
+            background-color: #edededf0;
+            max-width: 100%;
+        }
+        .guide-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .guide-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .guide-item {
+            display: flex;
+            background-color: #1c1c1c;
+            color: #fafafa;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .guide-img {
+            width: 300px;
+            aspect-ratio: 1/1;
+        }
+        .guide-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .guide-txt {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .guide-txt h3 {
+            font-size: 26px;
+            color: #FFA126;
+            margin-bottom: 15px;
+        }
+        .guide-txt p {
+            font-size: 15px;
+            color: #b3b3b3;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .tea-meta {
+            display: flex;
+            gap: 7.5px;
+            font-size: 13px;
+            color: #738A3D;
+            font-weight: 600;
+        }
+        .tea-meta span strong {
+            color: #fafafa;
+        }
+        .benefit-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+        .benefit-card-wp {
+            width: 49%;
+            margin-bottom: 15px;
+        }
+        .benefit-card {
+            background-color: #fafafa;
+            border: 1px solid #1c1c1c;
+            width: 100%;
+            padding: 40px;
+            border-radius: 10px;
+        }
+        .benefit-card h3 {
+            font-size: 22px;
+            color: #738A3D;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        .benefit-card p {
+            font-size: 15px;
+            color: #444;
+            line-height: 1.7;
+        }
+        footer {
+            background-color: #1c1c1c;
+            color: #fafafa;
+            padding: 60px 20px 30px 20px;
+            font-size: 14px;
+            width: 100%;
+        }
+        .footer-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-brand h2 { 
+            font-size: 24px; 
+            font-weight: 800; 
+            color: #FFA126; 
+            margin-bottom: 12px; 
+        }
+        .footer-brand p { 
+            color: #b3b3b3; 
+            max-width: 300px; 
+            line-height: 1.6; 
+        }
+        .footer-links { 
+            display: flex; 
+            gap: 60px; 
+        }
+        .link-group h3 { 
+            font-size: 16px; 
+            font-weight: 600; 
+            color: #fafafa; 
+            margin-bottom: 15px; 
+        }
+        .link-group ul { 
+            padding: 0; 
+            list-style: none;
+        }
+        .link-group li { 
+            margin-bottom: 10px; 
+        }
+        .link-group li a { 
+            color: #b3b3b3; 
+            text-decoration: none; 
+        }
+        .link-group li a:hover { 
+            color: #FFA126; 
+        }
+        .footer-divider { 
+            border: 0; 
+            height: 1px;
+            background-color: #333333; 
+            margin-bottom: 30px; 
+        }
+        .footer-bottom { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-end; 
+            flex-wrap: wrap; 
+            gap: 20px; 
+        }
+        .footer-info p { 
+            color: #888888; 
+            line-height: 1.8; 
+            font-size: 12px; 
+        }
+        .footer-copyright p { 
+            color: #666666; 
+            font-size: 12px; 
+        }
+        @media only screen and (max-width : 1024px) {
+            header { 
+                padding: 10px 20px; 
+                flex-wrap: wrap; 
+                height: auto; 
+                gap: 10px; 
+            }
+            header #main_nav { 
+                width: 100%; 
+                order: 3; 
+                text-align: center; 
+            }
+            header #main_nav ul { 
+                gap: 20px; 
+                justify-content: center; 
+            }
+            header #main_nav ul li a { 
+                font-size: 13px; 
+            }
+            header #login { 
+                margin-left: auto; 
+                order: 2; 
+            }
+            .sub-header h1 { 
+                font-size: 10vw; 
+            }
+            section {
+                padding: 50px 20px; 
+            }
+            .section-title { 
+                margin-bottom: 35px; 
+            }
+            .section-title h2 { 
+                font-size: 28px; 
+                margin-bottom: 8px; 
+            }
+            .section-title p { 
+                font-size: 14px; 
+            }
+            .guide-item { 
+                display: block; 
+            }
+            .guide-img { 
+                width: 100%; 
+                aspect-ratio: 16/9; 
+            }
+            .guide-txt { 
+                padding: 25px 20px; 
+            }
+            .guide-txt h3 { 
+                font-size: 22px; 
+                margin-bottom: 12px; 
+            }
+            .guide-txt p { 
+                font-size: 14px; 
+                line-height: 1.6; 
+            }
+            .tea-meta { 
+                gap: 10px; 
+                flex-wrap: wrap; 
+            }
+            .benefit-card-wp { 
+                width: 100% !important; 
+            }
+            .benefit-card { 
+                padding: 25px 20px; 
+            }
+            .benefit-card h3 { 
+                font-size: 18px; 
+                margin-bottom: 10px; 
+            }
+            .benefit-card p { 
+                font-size: 14px; 
+                line-height: 1.6; 
+            }
+            footer {
+                padding: 40px 20px 30px 20px;
+            }
+            .footer-brand {
+                margin-bottom: 15px;
+            }
+            .link-group h3 {
+            margin-top: 15px;
+            }
+            .footer-copyright {
+                text-align: left !important;
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="c_m_12 c_12">
+        <div class="home-logo"><a href="index.html">CHA:DAUM</a></div>
+        <nav id="main_nav">
+            <ul>
+                <li><a href="blend.html">BLEND</a></li>
+                <li><a href="teanote.html">TEA NOTE</a></li>
+                <li><a href="aroma.html">AROMA</a></li>
+                <li><a href="moment.html">MOMENT</a></li>
+                <li><a href="brewing.html">BREWING</a></li>
+            </ul>
+        </nav>
+        <nav id="login">
+            <ul>
+                <li><a href="./login.html">로그인</a></li>
+                <li><a href="./signup.html">회원가입</a></li>
+                <li><a href="./cart.html">장바구니</a></li>
+                <li><a href="./mypage.html">마이페이지</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="clear"></div>
+
+    <div class="sub-header c_m_12 c_12">
+        <h1>TEA NOTE</h1>
+        <p>기록으로 만나는 차의 이면, 깊이 있는 탐구의 기록</p>
+    </div>
+    <div class="clear"></div>
+
+    <section id="tea-history" class="c_m_12 c_12">
+        <div class="section-title">
+            <h2>TEA HISTORY</h2>
+            <p>우연한 발견에서 세계인의 문화가 되기까지의 위대한 여정</p>
+        </div>
+
+        <div class="history-timeline">
+            <div class="timeline-item">
+                <div class="timeline-year">기원전 2737년</div>
+                <div class="timeline-content">
+                    <h3>신농황제의 우연한 발견</h3>
+                    <p>중국의 신농황제가 숲에서 물을 끓이던 중, 바람에 날려 온 야생 찻잎이 가마솥에 떨어졌습니다.<br>떨어진 찻잎이 우러난 맑고 향기로운 물을 마시며 인류 최초의 '차(Tea)' 역사가 시작되었다고 전해집니다.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">8세기 당나라</div>
+                <div class="timeline-content">
+                    <h3>다경(茶經)의 탄생과 문화의 정립</h3>
+                    <p>육우(陸羽)가 세계 최초의 차 백과사전인 다경을 집필하면서,<br>차는 단순한 약용 음료를 넘어 정신을 수양하는 예술이자 독창적인 규격 문화의 반열에 올라서게 되었습니다.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">17 - 18세기</div>
+                <div class="timeline-content">
+                    <h3>대항해시대와 동서양의 만남</h3>
+                    <p>네덜란드와 영국 동인도회사를 통해 아시아의 차가 유럽 왕실로 전파되었습니다.<br>영국에서는 상류층의 전유물인 '애프터눈 티' 문화로 발전하며 전 세계적인 무역 전쟁과 역사의 물줄기를 바꾸는 핵심재화가 되었습니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="clear"></div>
+
+    <section id="tea-guide-section" class="c_m_12 c_12">
+        <div class="guide-container">
+            <div class="section-title">
+                <h2>TEA GUIDE</h2>
+                <p>발효도와 가공 방식에 따른 색과 결의 차 분류</p>
+            </div>
+
+            <div class="guide-list">
+                <div class="guide-item">
+                    <div class="guide-img"><img src="./image/teanote_greentea.jpg"></div>
+                    <div class="guide-txt">
+                        <h3>GREEN TEA (녹차)</h3>
+                        <p>찻잎을 수확한 직후 열을 가해 산화를 막은 비발효차입니다.<br>찻잎 본연의 푸른 빛과 싱그럽고 풋풋한 풀 향, 그리고 깔끔하고 단백한 감칠맛이 특징입니다.</p>
+                        <div class="tea-meta">
+                            <span>발효도: <strong>0% (비발효)</strong></span>
+                            <span>우림 온도: <strong>70°C - 80°C</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="guide-item">
+                    <div class="guide-img"><img src="./image/teanote_oolongtea.jpg"></div>
+                    <div class="guide-txt">
+                        <h3>OOLONG TEA (우롱차)</h3>
+                        <p>녹차와 홍차의 중간 단계로, 찻잎을 10%에서 70% 사이로 부분 발효시킨 청차입니다.<br>녹차의 산뜻한 꽃향기와 홍차의 깊은 과일 풍미를 동시에 품은 다채로운 스펙트럼의 차입니다.</p>
+                        <div class="tea-meta">
+                            <span>발효도: <strong>10% - 70% (반발효)</strong></span>
+                            <span>우림 온도: <strong>85°C - 95°C</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="guide-item">
+                    <div class="guide-img"><img src="./image/teanote_blacktea.jpg"></div>
+                    <div class="guide-txt">
+                        <h3>BLACK TEA (홍차)</h3>
+                        <p>찻잎을 85% 이상 완전히 산화시켜 완성한 풀발효차입니다.<br>붉고 깊은 수색과 함께 특유의 달콤한 몰트향, 깊은 타닌감과 중후한 보디감을 자랑하며 전 세계에서 가장 사랑받는 카테고리입니다.</p>
+                        <div class="tea-meta">
+                            <span>발효도: <strong>85% 이상 (완전발효)</strong></span>
+                            <span>우림 온도: <strong>95°C - 100°C</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="clear"></div>
+
+    <section id="tea-benefits" class="c_m_12 c_12">
+        <div class="section-title">
+            <h2>BENEFITS & ELEMENTS</h2>
+            <p>찻잎 한 장 속에 숨겨진 현대 과학이 증명하는 건강한 요소들</p>
+        </div>
+
+        <div class="benefit-grid">
+            <div class="benefit-card-wp c_m_12 c_6">
+                <div class="benefit-card">
+                    <h3>01. 카테킨 (Catechin)</h3>
+                    <p>차의 떫은맛을 내는 폴리페놀 성분으로, 강력한 항산화 작용을 합니다.<br>체내 활성산소를 제거해 노화를 예방하고 신진대사를 촉진하여 체지방 감소 및 혈관 건강 개선에 도움을 줍니다.</p>
+                </div>
+            </div>
+
+            <div class="benefit-card-wp c_m_12 c_6">
+                <div class="benefit-card">
+                    <h3>02. 테아닌 (L-Theanine)</h3>
+                    <p>찻잎에 들어있는 특유의 아미노산 성분으로, 뇌의 알파파를 활성화합니다.<br>커피와 달리 카페인이 체내에 부드럽게 흡수되도록 조율하며, 긴장을 완화하고 집중력을 높이는 안정 효과를 가져다줍니다.</p>
+                </div>
+            </div>
+
+            <div class="benefit-card-wp c_m_12 c_6">
+                <div class="benefit-card">
+                    <h3>03. 플라보노이드 (Flavonoid)</h3>
+                    <p>구강 내 박테리아 번식을 억제하여 천연 소독제 역할을 수행합니다.<br>치아 에나멜 형성을 돕는 불소 성분과 함께 작용하여 구취를 제거하고 전반적인 면역 기능을 활성화하는 데 뛰어난 효능이 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="benefit-card-wp c_m_12 c_6">
+                <div class="benefit-card">
+                    <h3>04. 비타민 C & E (Vitamins)</h3>
+                    <p>발효가 적은 차일수록 풍부하게 보존되어 있는 천연 비타민 계열입니다.<br>피부의 멜라닌 색소 침착을 방지하여 미백 효과를 주고, 면역 세포를 강화해 감기 예방 및 만성 피로 해소에 탁월합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="clear"></div>
+
+    <footer class="c_m_12 c_12">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand c_m_12 c_6">
+                    <h2>CHA:DAUM</h2>
+                    <p>전통과 현대의 사이에서, 새로운 시선으로.</p>
+                </div>
+                <div class="footer-links c_m_12 c_6">
+                    <div class="link-group c_m_6 c_6">
+                        <h3>MENU</h3>
+                        <ul>
+                            <li><a href="blend.html">BLEND</a></li>
+                            <li><a href="teanote.html">TEA NOTE</a></li>
+                            <li><a href="aroma.html">AROMA</a></li>
+                            <li><a href="moment.html">MOMENT</a></li>
+                            <li><a href="brewing.html">BREWING</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group c_m_6 c_6">
+                        <h3>CUSTOMER</h3>
+                        <ul>
+                            <li><a href="#">고객센터</a></li>
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">1:1 문의</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            
+            <hr class="footer-divider">
+            
+            <div class="footer-bottom">
+                <div class="footer-info c_m_12 c_8">
+                    <p>상호명: 차:다움 | 대표자: 임유진 | 사업자등록번호: 2025-33845</p>
+                    <p>주소: 서울시 서울숲 차다움 빌딩 10층 | 이메일: limyujin@chadaum.com</p>
+                </div>
+                <div class="footer-copyright c_m_12 c_4">
+                    <p>&copy; 2026 CHA:DAUM. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
